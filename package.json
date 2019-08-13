@@ -2,13 +2,43 @@
   "name": "project-board-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel src -d lib",
+    "start": "npm run build && node lib/server",
+    "start:dev": "nodemon --exec babel-node src/server",
+    "migrate": "sequelize db:migrate",
+    "undo:migrate": "sequelize db:migrate:undo:all",
+    "seed": "sequelize db:seed:all"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "@babel/polyfill": "^7.4.4",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "cors": "^2.8.4",
+    "dotenv": "^6.2.0",
+    "errorhandler": "^1.5.0",
+    "express": "^4.17.1",
+    "express-jwt": "^5.3.1",
+    "express-session": "^1.15.6",
+    "pg": "^7.11.0",
+    "pg-connection-string": "^2.1.0",
+    "pg-hstore": "^2.3.3",
+    "pusher": "^2.2.1",
+    "request": "^2.87.0",
+    "sequelize": "^5.8.12",
+    "sequelize-cli": "^5.5.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/register": "^7.5.5",
+    "nodemon": "^1.19.1"
   }
 }
