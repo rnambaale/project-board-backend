@@ -4,7 +4,7 @@ import session from "express-session";
 import cors from "cors";
 //import errorhandler from "errorhandler";
 //import passport from "passport";
-//import config from "./db/config/config";
+import config from "./db/config/config";
 import router from "./routes/index";
 
 // Create global app object
@@ -36,8 +36,8 @@ app.use("*", (req, res, next) => {
   next(err);
 });
 
-var port = 5000;
+//var port = config.port;
 
-app.listen(port, function(error) {
-  console.log("App listening on port: " + port);
+app.listen(config.port, function(error) {
+  console.log("App listening on port: " + config.port);
 });
