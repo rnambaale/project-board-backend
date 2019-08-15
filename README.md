@@ -18,3 +18,11 @@ The following tools will be needed to run this application successfully:
 - Run `npm install` to install all dependencies
 - Run npm start to start the app
 - Access endpoints on **localhost:5000**
+
+## Running the database migrations
+
+Run `npm run undo:migrate` in the terminal for the cloned folder to undo existing migrations.
+
+Run `npm run migrate` in the terminal for the cloned folder to do migrations.
+
+Run `npm run seed` in the terminal for the cloned folder to add seeds to the database.

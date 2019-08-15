@@ -11,8 +11,13 @@ import router from "./routes/index";
 const app = express();
 
 app.use(cors());
+
+// for parsing application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// for parsing application/json
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+
 app.use(session({ secret: "library" }));
 
 app.get("/", (req, res) => {
