@@ -29,7 +29,7 @@ module.exports = {
   },
   isProduction: process.env.NODE_ENV === "production",
   isTest: process.env.NODE_ENV === "test",
-  port: process.env.PORT || 3000,
+  port: process.env.PORT || 5000,
   secret: process.env.SECRET,
   GENERATE_SECRET: process.env.GENERATE_SECRET,
   sendgrid: process.env.SENDGRID_API_KEY,

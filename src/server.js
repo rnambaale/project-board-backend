@@ -4,15 +4,20 @@ import session from "express-session";
 import cors from "cors";
 //import errorhandler from "errorhandler";
 //import passport from "passport";
-//import config from "./db/config/config";
+import config from "./db/config/config";
 import router from "./routes/index";
 
 // Create global app object
 const app = express();
 
 app.use(cors());
+
+// for parsing application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// for parsing application/json
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+
 app.use(session({ secret: "library" }));
 
 app.get("/", (req, res) => {
@@ -31,8 +36,8 @@ app.use("*", (req, res, next) => {
   next(err);
 });
 
-var port = 5000;
+//var port = config.port;
 
-app.listen(port, function(error) {
-  console.log("App listening on port: " + port);
+app.listen(config.port, function(error) {
+  console.log("App listening on port: " + config.port);
 });
