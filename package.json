@@ -11,7 +11,8 @@
     "start:dev": "nodemon --exec babel-node src/server",
     "migrate": "npx sequelize db:migrate",
     "undo:migrate": "npx sequelize db:migrate:undo:all",
-    "seed": "npx sequelize-cli db:seed:all"
+    "seed": "npx sequelize-cli db:seed:all",
+    "migrate:fresh": "npm run undo:migrate && npm run migrate"
   },
   "author": "",
   "license": "ISC",
