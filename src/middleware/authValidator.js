@@ -4,7 +4,7 @@ const authValidator = {
   passwordValidator: [
     body("password")
       .trim()
-      .exists({ checkFalsy: false })
+      .exists({ checkFalsy: true })
       .withMessage("Password is required.")
       .isLength({ min: 3 })
       .withMessage("Password must be a minmum of 3 characters.")
@@ -12,7 +12,7 @@ const authValidator = {
       .withMessage("Password must be alphanumeric.")
   ],
   emailValidator: [
-    check("email")
+    body("email")
       .trim()
       .exists({ checkFalsy: true })
       .withMessage("Email is required.")
