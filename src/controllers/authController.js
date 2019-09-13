@@ -1,8 +1,9 @@
 import bcrypt from "bcryptjs";
 import { Auth, hashPassword } from "../helpers/helpers";
 import { Blacklist, User } from "../db/models";
+import { sendEmail } from "../helpers/sendMail"
 
-const { generateToken } = Auth;
+const { generateToken, verifyToken } = Auth;
 
 /**
  * @description Authentication Controller
@@ -115,6 +116,72 @@ class AuthController {
         message: error.message
       });
     }
+  }
+
+  /**
+   *
+   * @constructor
+   * @description reset password
+   * @static
+   * @param {object} req
+   * @param 'string' res
+   * @memberof AuthController
+   */
+  static async resetLink(req, res) {
+    try {
+      const { email } = req.body;
+      ;
+      const result = await User.findOne({ where: { email } });
+
+      if(!result){
+        return res.status(400).json({
+          status: 400,
+          message: "No user with the provided email, please check email or signup",
+
+        });
+      }
+
+      const { id }  = result;
+      const token  = await generateToken({id});
+
+
+      const { dataValues } = result;
+
+      let user = dataValues;
+
+      await sendEmail(user, token);
+
+
+    } catch (error) {
+      return res.status(500).json({
+        status: 500,
+        message: error.message
+      });
+    }
+  }
+
+  static async resetPassword(req, res){
+      try {
+          const { password } = req.body
+          // const { id } = req.params.id
+          // console.log(req.params)
+          const verify = await verifyToken(req.params.token)
+          const {id} = verify
+          console.log(id)
+          const hashedpassword = hashPassword(password);
+          await User.update({ password: hashedpassword }, { where: { id } });
+          return res.status(200).json({
+              message: 'You have reset your password Successfully!'
+          });
+
+
+
+      }catch (error) {
+          return res.status(500).json({
+              status: 500,
+              message: error.message
+          });
+      }
   }
 }
 
