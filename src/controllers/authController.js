@@ -163,18 +163,13 @@ class AuthController {
   static async resetPassword(req, res){
       try {
           const { password } = req.body
-          // const { id } = req.params.id
-          // console.log(req.params)
           const verify = await verifyToken(req.params.token)
           const {id} = verify
-          console.log(id)
           const hashedpassword = hashPassword(password);
           await User.update({ password: hashedpassword }, { where: { id } });
           return res.status(200).json({
               message: 'You have reset your password Successfully!'
           });
-
-
 
       }catch (error) {
           return res.status(500).json({
