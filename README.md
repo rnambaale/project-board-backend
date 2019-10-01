@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/rnambaale/project-board-backend.svg?branch=master)](https://travis-ci.org/rnambaale/project-board-backend)
+
 # project board
 
 Backend for the project board
