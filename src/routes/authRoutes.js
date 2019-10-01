@@ -29,4 +29,8 @@ router.post(
 
 router.post("/logout", ValidateToken.checkToken, AuthController.logOut);
 
+router.post("/reset-password", AuthController.resetLink);
+
+router.put("/reset/:id/:token", AuthController.resetPassword)
+
 export default router;
