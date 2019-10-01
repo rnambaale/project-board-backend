@@ -38,6 +38,8 @@ app.use("*", (req, res, next) => {
 
 //var port = config.port;
 
-app.listen(config.port, function(error) {
+const server = app.listen(config.port, function(error) {
   console.log("App listening on port: " + config.port);
 });
+
+export default server;
