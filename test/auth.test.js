@@ -37,7 +37,7 @@ describe("Auth", () => {
       password: "password"
     };
 
-    it("should signup a user", done => {
+    it("/api/v1/auth/signup: should signup a user", done => {
       chai
         .request(app)
         .post("/api/v1/auth/signup")
@@ -56,7 +56,7 @@ describe("Auth", () => {
       password: "password"
     };
 
-    it("should login a user", done => {
+    it("/api/v1/auth/login: should login a user", done => {
       chai
         .request(app)
         .post("/api/v1/auth/login")
@@ -70,7 +70,7 @@ describe("Auth", () => {
         });
     });
 
-    it("It should return invalid email or password", done => {
+    it("/api/v1/auth/login: It should return invalid email or password", done => {
       const newUser = { ...existingUser, password: "passhuuuuu" };
       chai
         .request(app)
@@ -85,7 +85,7 @@ describe("Auth", () => {
         });
     });
 
-    it("It should return invalid email or password", done => {
+    it("/api/v1/auth/login: should return invalid email or password", done => {
       const newUser = { ...existingUser, email: "fakeemail@email.com" };
       chai
         .request(app)
@@ -100,7 +100,7 @@ describe("Auth", () => {
         });
     });
 
-    it("should logout user successfully", done => {
+    it("/api/v1/auth/logout: should logout user successfully", done => {
       chai
         .request(app)
         .post("/api/v1/auth/logout")
@@ -114,7 +114,7 @@ describe("Auth", () => {
         });
     });
 
-    it("should fail to logout already logged out user successfully", done => {
+    it("/api/v1/auth/logout: should fail to logout already logged out user successfully", done => {
       chai
         .request(app)
         .post("/api/v1/auth/logout")
@@ -126,7 +126,7 @@ describe("Auth", () => {
         });
     });
 
-    it("user should provide a token", done => {
+    it("/api/v1/auth/logout: user should provide a token when logging out", done => {
       chai
         .request(app)
         .post("/api/v1/auth/logout")
