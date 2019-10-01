@@ -9,8 +9,8 @@ cache: directories
 install:
   - "npm install"
 
-script:
-  - npm run test
+# script:
+#   - npm run test
 
   services:
  - postgresql
