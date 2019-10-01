@@ -6,5 +6,11 @@ node_js:
 cache: directories
   - node_modules
 
+install:
+  - "npm install"
+
 script:
-  - npm test
+  - npm run test
+
+  services:
+ - postgresql
